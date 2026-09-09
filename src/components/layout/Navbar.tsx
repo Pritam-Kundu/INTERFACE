@@ -43,16 +43,24 @@ export const Navbar: React.FC = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center space-x-8">
-          {navLinks.map((link) => (
-            <a 
-              key={link.label} 
-              href={link.href}
-              className="text-sm text-secondary hover:text-primary transition-colors tracking-wide focus:outline-none focus:ring-2 focus:ring-accent rounded-sm px-2 py-1"
-            >
-              {link.label}
-            </a>
-          ))}
+        <div className="hidden md:flex items-center space-x-10">
+          {navLinks.map((link) => {
+            const isActive = link.label === 'Home'; // Hardcoded for this static view
+            return (
+              <a 
+                key={link.label} 
+                href={link.href}
+                className={`relative text-sm tracking-wide transition-colors focus:outline-none focus:ring-2 focus:ring-accent rounded-sm py-2 ${
+                  isActive ? 'text-white' : 'text-white/60 hover:text-white'
+                }`}
+              >
+                {link.label}
+                {isActive && (
+                  <div className="absolute -bottom-1 left-0 w-full h-[2px] bg-cyan-500 rounded-full" />
+                )}
+              </a>
+            );
+          })}
         </div>
 
         {/* Mobile Toggle */}
