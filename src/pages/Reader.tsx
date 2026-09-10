@@ -53,6 +53,8 @@ export const Reader: React.FC = () => {
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      // Ignore key events if typing in an input
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
       if (tocOpen) return; // Disable keyboard nav if TOC is open
       
       switch (e.key) {
@@ -72,6 +74,17 @@ export const Reader: React.FC = () => {
           if (document.fullscreenElement) {
             document.exitFullscreen();
           }
+          break;
+        case '=':
+        case '+':
+          setZoomLevel(prev => Math.min(prev + 0.1, 2));
+          break;
+        case '-':
+        case '_':
+          setZoomLevel(prev => Math.max(prev - 0.1, 0.5));
+          break;
+        case '0':
+          setZoomLevel(1);
           break;
       }
     };
@@ -118,8 +131,8 @@ export const Reader: React.FC = () => {
         onNextPage={handleNextPage}
         onPrevPage={handlePrevPage}
         onGoToPage={handleGoToPage}
-        onZoomIn={() => setZoomLevel(prev => Math.min(prev + 0.5, 3))}
-        onZoomOut={() => setZoomLevel(prev => Math.max(prev - 0.5, 1))}
+        onZoomIn={() => setZoomLevel(prev => Math.min(prev + 0.1, 2))}
+        onZoomOut={() => setZoomLevel(prev => Math.max(prev - 0.1, 0.5))}
         onZoomReset={() => setZoomLevel(1)}
         onToggleFullscreen={toggleFullscreen}
         onToggleTOC={() => setTocOpen(true)}

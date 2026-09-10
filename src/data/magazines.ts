@@ -13,6 +13,18 @@ export interface MagazineEdition {
 
 export const magazines: MagazineEdition[] = [
   {
+    id: "edition-2026",
+    title: "INTERFACE",
+    year: 2026,
+    description: "The official annual departmental magazine of the Department of Computer Applications, Kalyani Government Engineering College.",
+    department: "Master of Computer Applications",
+    institution: "Kalyani Government Engineering College",
+    pageCount: 47,
+    pdfPath: "/magazines/2026/INTERFACE-2026.pdf",
+    pagesPath: "/magazines/2026/pages/",
+    isCurrent: true,
+  },
+  {
     id: "edition-2025",
     title: "INTERAFACE",
     year: 2025,
@@ -22,7 +34,7 @@ export const magazines: MagazineEdition[] = [
     pageCount: 42,
     pdfPath: "/magazines/2025/INTERFACE-2025.pdf",
     pagesPath: "/magazines/2025/pages/",
-    isCurrent: true,
+    isCurrent: false,
   },
   {
     id: "edition-2024",

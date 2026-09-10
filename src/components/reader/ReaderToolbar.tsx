@@ -3,8 +3,8 @@ import {
   ChevronLeft, 
   ChevronRight, 
   Menu, 
-  ZoomIn, 
-  ZoomOut, 
+  Plus, 
+  Minus, 
   Maximize, 
   Minimize, 
   Download, 
@@ -110,14 +110,14 @@ export const ReaderToolbar: React.FC<ReaderToolbarProps> = ({
 
           <div className="w-px h-4 bg-border mx-1" />
 
-          <Button variant="ghost" size="sm" onClick={onZoomOut} disabled={zoomLevel <= 1} aria-label="Zoom out" className="h-8 w-8 p-0">
-            <ZoomOut size={16} />
+          <Button variant="ghost" size="sm" onClick={onZoomOut} disabled={zoomLevel <= 0.5} aria-label="Zoom out" title="Zoom out" className="h-8 w-8 p-0 group">
+            <Minus size={16} className="transition-colors group-hover:text-white" />
           </Button>
-          <Button variant="ghost" size="sm" onClick={onZoomReset} aria-label="Reset zoom" className="h-8 px-2 text-xs font-mono">
+          <Button variant="ghost" size="sm" onClick={onZoomReset} aria-label="Reset zoom" title="Reset zoom to 100%" className="h-8 px-2 text-xs font-mono hover:bg-white/10">
             {Math.round(zoomLevel * 100)}%
           </Button>
-          <Button variant="ghost" size="sm" onClick={onZoomIn} disabled={zoomLevel >= 3} aria-label="Zoom in" className="h-8 w-8 p-0">
-            <ZoomIn size={16} />
+          <Button variant="ghost" size="sm" onClick={onZoomIn} disabled={zoomLevel >= 2} aria-label="Zoom in" title="Zoom in" className="h-8 w-8 p-0 group">
+            <Plus size={16} className="transition-colors group-hover:text-white" />
           </Button>
 
           <div className="w-px h-4 bg-border mx-1" />

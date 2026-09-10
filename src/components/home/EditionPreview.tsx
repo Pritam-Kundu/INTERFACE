@@ -6,7 +6,7 @@ import { Button } from '../ui/Button';
 
 export const EditionPreview: React.FC = () => {
   return (
-    <section id="current" className="py-24 relative overflow-hidden bg-background">
+    <section id="current" className="pt-8 pb-24 relative overflow-hidden bg-background">
       {/* Decorative ambient background */}
       <div className="absolute top-0 right-0 -translate-y-12 translate-x-1/3 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/3 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />

@@ -87,15 +87,21 @@ export const FlipbookViewer: React.FC<FlipbookViewerProps> = ({
   };
 
   return (
-    <div 
-      className="w-full h-full flex items-center justify-center overflow-hidden touch-none"
-      style={{
-        // We use transform to handle zooming so the canvas layout doesn't break
-        transform: `scale(${zoomLevel})`,
-        transition: 'transform 0.3s cubic-bezier(0.2, 0, 0, 1)',
-        transformOrigin: 'center center'
-      }}
-    >
+    <div className={`w-full h-full ${zoomLevel > 1 ? 'overflow-auto touch-pan-x touch-pan-y' : 'overflow-hidden touch-none'} flex items-center justify-center`}>
+      <div
+        className="flex items-center justify-center transition-all duration-300 ease-out"
+        style={{
+          width: zoomLevel > 1 ? `${dimensions.width * (isMobile ? 1 : 2) * zoomLevel}px` : '100%',
+          height: zoomLevel > 1 ? `${dimensions.height * zoomLevel}px` : '100%',
+        }}
+      >
+        <div 
+          style={{
+            transform: `scale(${zoomLevel})`,
+            transition: 'transform 0.3s cubic-bezier(0.2, 0, 0, 1)',
+            transformOrigin: 'center center'
+          }}
+        >
       {dimensions.width > 0 && (
         <HTMLFlipBook
           width={dimensions.width}
@@ -139,6 +145,8 @@ export const FlipbookViewer: React.FC<FlipbookViewerProps> = ({
           })}
         </HTMLFlipBook>
       )}
+        </div>
+      </div>
     </div>
   );
 };

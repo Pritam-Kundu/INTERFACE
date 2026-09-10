@@ -4,6 +4,7 @@ import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { Home } from './pages/Home';
 import { Reader } from './pages/Reader';
+import { SoundToggle } from './components/ui/SoundToggle';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           </Routes>
         </main>
 
-        
+        <SoundToggle />
         <Footer />
       </div>
     </BrowserRouter>
