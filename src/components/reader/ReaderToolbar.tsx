@@ -3,8 +3,8 @@ import {
   ChevronLeft, 
   ChevronRight, 
   Menu, 
-  Plus, 
-  Minus, 
+  ZoomIn, 
+  ZoomOut, 
   Maximize, 
   Minimize, 
   Download, 
@@ -66,11 +66,11 @@ export const ReaderToolbar: React.FC<ReaderToolbarProps> = ({
         <div className="flex items-center gap-1 bg-black/20 rounded-md p-1">
           <Button 
             variant="ghost" 
-            size="sm" 
+            size="icon" 
             onClick={onPrevPage} 
             disabled={currentPage <= 1}
             aria-label="Previous page"
-            className="h-8 w-8 p-0"
+            className="group"
           >
             <ChevronLeft size={18} />
           </Button>
@@ -89,11 +89,11 @@ export const ReaderToolbar: React.FC<ReaderToolbarProps> = ({
 
           <Button 
             variant="ghost" 
-            size="sm" 
+            size="icon" 
             onClick={onNextPage} 
             disabled={currentPage >= totalPages}
             aria-label="Next page"
-            className="h-8 w-8 p-0"
+            className="group"
           >
             <ChevronRight size={18} />
           </Button>
@@ -110,19 +110,19 @@ export const ReaderToolbar: React.FC<ReaderToolbarProps> = ({
 
           <div className="w-px h-4 bg-border mx-1" />
 
-          <Button variant="ghost" size="sm" onClick={onZoomOut} disabled={zoomLevel <= 0.5} aria-label="Zoom out" title="Zoom out" className="h-8 w-8 p-0 group">
-            <Minus size={16} className="transition-colors group-hover:text-white" />
+          <Button variant="ghost" size="icon" onClick={onZoomOut} disabled={zoomLevel <= 0.5} aria-label="Zoom out" title="Zoom out" className="group">
+            <ZoomOut size={16} className="transition-colors group-hover:text-white" />
           </Button>
           <Button variant="ghost" size="sm" onClick={onZoomReset} aria-label="Reset zoom" title="Reset zoom to 100%" className="h-8 px-2 text-xs font-mono hover:bg-white/10">
             {Math.round(zoomLevel * 100)}%
           </Button>
-          <Button variant="ghost" size="sm" onClick={onZoomIn} disabled={zoomLevel >= 2} aria-label="Zoom in" title="Zoom in" className="h-8 w-8 p-0 group">
-            <Plus size={16} className="transition-colors group-hover:text-white" />
+          <Button variant="ghost" size="icon" onClick={onZoomIn} disabled={zoomLevel >= 2} aria-label="Zoom in" title="Zoom in" className="group">
+            <ZoomIn size={16} className="transition-colors group-hover:text-white" />
           </Button>
 
           <div className="w-px h-4 bg-border mx-1" />
 
-          <Button variant="ghost" size="sm" onClick={onToggleFullscreen} aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"} className="h-8 w-8 p-0">
+          <Button variant="ghost" size="icon" onClick={onToggleFullscreen} aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}>
             {isFullscreen ? <Minimize size={16} /> : <Maximize size={16} />}
           </Button>
         </div>

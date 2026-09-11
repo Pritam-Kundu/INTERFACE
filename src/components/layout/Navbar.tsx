@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,7 +19,7 @@ export const Navbar: React.FC = () => {
     { label: 'Home', href: '/' },
     { label: 'Current Edition', href: '/#current' },
     { label: 'Archive', href: '/#archive' },
-    { label: 'About', href: '/#about' },
+    { label: 'About', href: '/about' },
   ];
 
   return (
@@ -34,7 +35,7 @@ export const Navbar: React.FC = () => {
           />
           <div className="flex flex-col">
             <span className="text-xl sm:text-2xl font-editorial font-bold text-primary tracking-wider leading-none">
-              INTERAFACE
+              INTERFACE
             </span>
             <span className="text-[10px] sm:text-xs text-secondary tracking-widest uppercase mt-1">
               MCA Departmental Magazine
@@ -45,8 +46,12 @@ export const Navbar: React.FC = () => {
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-10">
           {navLinks.map((link) => {
-            const isActive = link.label === 'Home'; // Hardcoded for this static view
-            return (
+            const isActive = location.pathname === link.href || (location.pathname === '/' && link.href.startsWith('/#')); 
+            
+            // For hash links, we might just use normal anchors or Link
+            const isHash = link.href.includes('#');
+
+            return isHash ? (
               <a 
                 key={link.label} 
                 href={link.href}
@@ -55,10 +60,23 @@ export const Navbar: React.FC = () => {
                 }`}
               >
                 {link.label}
-                {isActive && (
+                {isActive && !isHash && (
                   <div className="absolute -bottom-1 left-0 w-full h-[2px] bg-cyan-500 rounded-full" />
                 )}
               </a>
+            ) : (
+              <Link 
+                key={link.label} 
+                to={link.href}
+                className={`relative text-sm tracking-wide transition-colors focus:outline-none focus:ring-2 focus:ring-accent rounded-sm py-2 ${
+                  location.pathname === link.href ? 'text-white' : 'text-white/60 hover:text-white'
+                }`}
+              >
+                {link.label}
+                {location.pathname === link.href && (
+                  <div className="absolute -bottom-1 left-0 w-full h-[2px] bg-cyan-500 rounded-full" />
+                )}
+              </Link>
             );
           })}
         </div>
@@ -78,14 +96,25 @@ export const Navbar: React.FC = () => {
       {mobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-surface/95 backdrop-blur-lg border-b border-border shadow-xl py-4 flex flex-col px-6 space-y-2">
           {navLinks.map((link) => (
-            <a 
-              key={link.label} 
-              href={link.href}
-              className="text-base text-secondary hover:text-primary transition-colors py-3 border-b border-border/30 last:border-0"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {link.label}
-            </a>
+            link.href.includes('#') ? (
+              <a 
+                key={link.label} 
+                href={link.href}
+                className="text-base text-secondary hover:text-primary transition-colors py-3 border-b border-border/30 last:border-0"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link 
+                key={link.label} 
+                to={link.href}
+                className="text-base text-secondary hover:text-primary transition-colors py-3 border-b border-border/30 last:border-0"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+            )
           ))}
         </div>
       )}

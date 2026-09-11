@@ -4,6 +4,7 @@ import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { Home } from './pages/Home';
 import { Reader } from './pages/Reader';
+import { About } from './pages/About';
 import { SoundToggle } from './components/ui/SoundToggle';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/read/:id" element={<Reader />} />
+            <Route path="/about" element={<About />} />
           </Routes>
         </main>
 

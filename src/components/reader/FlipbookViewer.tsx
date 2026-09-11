@@ -18,8 +18,6 @@ const Page = forwardRef<HTMLDivElement, { number: number; imageSrc: string; isCo
           src={props.imageSrc} 
           alt={`Page ${props.number}`}
           className="w-full h-full object-fill"
-          loading={props.number <= 3 ? "eager" : "lazy"}
-          decoding={props.number <= 3 ? "sync" : "async"}
         />
         {/* Subtle inner shadow for book binding effect */}
         {!props.isCover && (

@@ -47,7 +47,7 @@ export const Reader: React.FC = () => {
   const handleGoToPage = useCallback((page: number) => {
     if (flipbookRef.current) {
       // react-pageflip uses 0-indexed page numbers
-      flipbookRef.current.pageFlip().flip(page - 1);
+      flipbookRef.current.pageFlip().turnToPage(page - 1);
     }
   }, []);
 

@@ -19,7 +19,7 @@ export const magazines: MagazineEdition[] = [
     description: "The official annual departmental magazine of the Department of Computer Applications, Kalyani Government Engineering College.",
     department: "Master of Computer Applications",
     institution: "Kalyani Government Engineering College",
-    pageCount: 47,
+    pageCount: 60,
     pdfPath: "/magazines/2026/INTERFACE-2026.pdf",
     pagesPath: "/magazines/2026/pages/",
     isCurrent: true,
