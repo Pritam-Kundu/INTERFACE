@@ -32,7 +32,7 @@ export const SoundToggle: React.FC = () => {
   return (
     <button
       onClick={toggleSound}
-      className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-surface/80 backdrop-blur-md border border-border shadow-lg text-primary hover:text-accent transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent group"
+      className="fixed bottom-24 sm:bottom-6 right-4 sm:right-6 z-50 p-3 rounded-full bg-surface/80 backdrop-blur-md border border-border shadow-lg text-primary hover:text-accent transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent group"
       aria-label={isPlaying ? "Mute relaxing sound" : "Play relaxing sound"}
     >
       {isPlaying ? (
