@@ -14,7 +14,7 @@ export const ArchiveSection: React.FC = () => {
             title="Previous Editions"
             subtitle="Archive"
           />
-          <Link to="/archive" className="hidden md:inline-flex">
+          <Link to="/#archive" className="hidden md:inline-flex">
             <Button variant="ghost">
               VIEW FULL ARCHIVE
             </Button>
