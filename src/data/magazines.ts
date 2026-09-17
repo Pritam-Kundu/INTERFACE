@@ -26,7 +26,7 @@ export const magazines: MagazineEdition[] = [
   },
   {
     id: "edition-2025",
-    title: "INTERAFACE",
+    title: "INTERFACE",
     year: 2025,
     description: "The official annual departmental magazine of the Department of Computer Applications, Kalyani Government Engineering College.",
     department: "Master of Computer Applications",
@@ -38,7 +38,7 @@ export const magazines: MagazineEdition[] = [
   },
   {
     id: "edition-2024",
-    title: "INTERAFACE",
+    title: "INTERFACE",
     year: 2024,
     description: "Foundations of data science and machine learning. A deep dive into the research and projects by the MCA students.",
     department: "Master of Computer Applications",
@@ -50,7 +50,7 @@ export const magazines: MagazineEdition[] = [
   },
   {
     id: "edition-2023",
-    title: "INTERAFACE",
+    title: "INTERFACE",
     year: 2023,
     description: "The inaugural digital edition. Exploring software engineering practices and agile methodologies.",
     department: "Master of Computer Applications",

@@ -13,7 +13,7 @@ export const EditionPreview: React.FC = () => {
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <SectionHeading 
-          title={`INTERAFACE ${currentEdition.year}`}
+          title={`INTERFACE ${currentEdition.year}`}
           subtitle="Current Edition"
           align="center"
           className="mb-16 md:mb-24"

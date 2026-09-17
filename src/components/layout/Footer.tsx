@@ -26,7 +26,7 @@ export const Footer: React.FC = () => {
 
         {/* Magazine Identity */}
         <h3 className="text-2xl font-editorial font-bold text-primary tracking-wider mb-2">
-          INTERAFACE
+          INTERFACE
         </h3>
         <p className="text-secondary text-xs tracking-widest uppercase mb-8">
           MCA Departmental Magazine &mdash; {year} Edition
