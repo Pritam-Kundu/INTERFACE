@@ -2,15 +2,49 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Volume2, VolumeX } from 'lucide-react';
 
 export const SoundToggle: React.FC = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const userManuallyToggled = useRef(false);
 
   useEffect(() => {
     audioRef.current = new Audio('/assets/my-custom-sound.mp3');
     audioRef.current.loop = true;
     audioRef.current.volume = 0.5; // Soft volume
     
+    const attemptPlay = () => {
+      if (userManuallyToggled.current || !audioRef.current) return;
+      
+      audioRef.current.play().then(() => {
+        setIsPlaying(true);
+        removeListeners();
+      }).catch(error => {
+        console.warn("Autoplay prevented by browser:", error);
+        setIsPlaying(false);
+      });
+    };
+
+    const onInteraction = () => {
+      attemptPlay();
+    };
+
+    const removeListeners = () => {
+      document.removeEventListener('click', onInteraction);
+      document.removeEventListener('keydown', onInteraction);
+      document.removeEventListener('touchstart', onInteraction);
+      document.removeEventListener('scroll', onInteraction);
+    };
+
+    // Attempt to play immediately
+    attemptPlay();
+
+    // Listen for any user interaction to trigger playback
+    document.addEventListener('click', onInteraction);
+    document.addEventListener('keydown', onInteraction);
+    document.addEventListener('touchstart', onInteraction);
+    document.addEventListener('scroll', onInteraction);
+    
     return () => {
+      removeListeners();
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current = null;
@@ -19,6 +53,7 @@ export const SoundToggle: React.FC = () => {
   }, []);
 
   const toggleSound = () => {
+    userManuallyToggled.current = true;
     if (!audioRef.current) return;
 
     if (isPlaying) {
