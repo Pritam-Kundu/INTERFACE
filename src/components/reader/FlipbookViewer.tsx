@@ -136,7 +136,7 @@ export const FlipbookViewer: React.FC<FlipbookViewerProps> = ({
               <Page
                 key={pageNum}
                 number={pageNum}
-                imageSrc={`${pagesPath}${pageImageName}?v=20260912_3`}
+                imageSrc={`${pagesPath}${pageImageName}?v=20260923_2219`}
                 isCover={isCover}
               />
             );

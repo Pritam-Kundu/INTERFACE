@@ -20,7 +20,7 @@ export const magazines: MagazineEdition[] = [
     department: "Master of Computer Applications",
     institution: "Kalyani Government Engineering College",
     pageCount: 63,
-    pdfPath: "/magazines/2026/INTERFACE-2026.pdf?v=20260922_1",
+    pdfPath: "/magazines/2026/INTERFACE-2026.pdf?v=20260923_2219",
     pagesPath: "/magazines/2026/pages/",
     isCurrent: true,
   },
