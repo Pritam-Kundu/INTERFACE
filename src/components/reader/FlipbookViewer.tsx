@@ -85,9 +85,9 @@ export const FlipbookViewer: React.FC<FlipbookViewerProps> = ({
   };
 
   return (
-    <div className={`w-full h-full ${zoomLevel > 1 ? 'overflow-auto touch-pan-x touch-pan-y' : 'overflow-hidden touch-none'} flex items-center justify-center`}>
+    <div className={`w-full h-full ${zoomLevel > 1 ? 'overflow-auto touch-pan-x touch-pan-y flex' : 'overflow-hidden touch-none flex items-center justify-center'}`}>
       <div
-        className="flex items-center justify-center transition-all duration-300 ease-out"
+        className={`flex items-center justify-center transition-all duration-300 ease-out ${zoomLevel > 1 ? 'm-auto' : ''}`}
         style={{
           width: zoomLevel > 1 ? `${dimensions.width * (isMobile ? 1 : 2) * zoomLevel}px` : '100%',
           height: zoomLevel > 1 ? `${dimensions.height * zoomLevel}px` : '100%',
