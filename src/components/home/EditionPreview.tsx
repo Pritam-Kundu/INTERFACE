@@ -58,7 +58,7 @@ export const EditionPreview: React.FC = () => {
           </div>
 
           {/* Visual Preview Side (Dynamic fan out of real pages) */}
-          <div className="relative h-[400px] sm:h-[500px] lg:h-[600px] w-full max-w-lg mx-auto flex items-center justify-center order-1 lg:order-2 group perspective-1000">
+          <Link to={`/read/${currentEdition.year}`} className="relative h-[400px] sm:h-[500px] lg:h-[600px] w-full max-w-lg mx-auto flex items-center justify-center order-1 lg:order-2 group perspective-1000 cursor-pointer block">
             {currentEdition.pagesPath ? (
               <>
                 {/* Back page (Page 3) */}
@@ -85,7 +85,7 @@ export const EditionPreview: React.FC = () => {
             ) : (
               <div className="text-secondary">Preview unavailable</div>
             )}
-          </div>
+          </Link>
         </div>
       </div>
     </section>

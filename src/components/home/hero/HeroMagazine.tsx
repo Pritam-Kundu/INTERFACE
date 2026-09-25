@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { currentEdition } from '../../../data/magazines';
 import { useMouseParallax } from '../../../hooks/useMouseParallax';
 
@@ -19,8 +20,9 @@ export const HeroMagazine: React.FC = () => {
         isLoaded ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-95'
       }`}
     >
-      <div 
-        className="relative group cursor-pointer transition-transform duration-100 ease-out"
+      <Link 
+        to={`/read/${currentEdition.year}`}
+        className="relative group cursor-pointer transition-transform duration-100 ease-out block"
         style={{
           transform: `translate3d(${x}px, ${y}px, 0)`
         }}
@@ -63,7 +65,7 @@ export const HeroMagazine: React.FC = () => {
 
           </div>
         </div>
-      </div>
+      </Link>
 
       <style>{`
         @keyframes float {
